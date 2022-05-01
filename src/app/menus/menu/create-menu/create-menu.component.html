@@ -1,0 +1,12 @@
+<div class="menu" *ngIf="!!menu">
+  <div class="day" *ngFor="let day of getDaysOfMenu(menu.meals)">
+    <span class="day-label">{{getDate(+day)}}</span>
+    <span *ngIf="!!menu.meals[day].name" class="label" (click)="openSearch(+day)">{{menu.meals[day].name}}</span>
+    <span *ngIf="!menu.meals[day].name" class="label add" (click)="openSearch(+day)">Klik hier om een maaltijd toe te voegen</span>
+    <span (click)="removeMeal(+day)" *ngIf="!!menu.meals[day].name" class="delete"><fa-icon [icon]="faTimes"></fa-icon></span>
+  </div>
+</div>
+
+<grocs-modal [(active)]="openModal">
+  <grocs-search *ngIf="!!meals" [searchItems]="meals" (addItem)="addMeal($event)"></grocs-search>
+</grocs-modal>

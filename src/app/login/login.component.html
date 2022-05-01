@@ -1,0 +1,25 @@
+<img src="assets/grocs-logo.png"/>
+<div class="card">
+  <h1 class="m-0">Login</h1>
+  <form [formGroup]="loginForm">
+    <span class="form-control">
+      <label for="email" [class.invalid]="loginForm.controls.email.errors">Emailadres</label>
+      <input id="email"
+             type="text"
+             placeholder="Emailadres"
+             [class.invalid]="loginForm.controls.email.errors"
+             formControlName="email"
+             autocomplete="off"/>
+    </span>
+    <span class="form-control">
+      <label for="email" [class.invalid]="loginForm.controls.password.errors">Wachtwoord</label>
+      <input id="password"
+             type="password"
+             placeholder="Wachtwoord"
+             [class.invalid]="loginForm.controls.password.errors"
+             formControlName="password"
+             autocomplete="off"/>
+    </span>
+  </form>
+  <div class="button"><button (click)="submit()">Login</button></div>
+</div>

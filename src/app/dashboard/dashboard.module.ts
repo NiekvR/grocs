@@ -1,0 +1,18 @@
+import { NgModule } from '@angular/core';
+import {SharedModule} from '../shared/shared.module';
+
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {GroceryService} from '../core/services/collections/grocery/grocery.service';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+
+@NgModule({
+  declarations: [
+    DashboardComponent,
+    ShoppingListComponent
+  ],
+  imports: [
+    SharedModule
+  ],
+  providers: [ GroceryService ]
+})
+export class DashboardModule { }

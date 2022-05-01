@@ -1,0 +1,45 @@
+.icon {
+  height: 32px;
+  width: 32px;
+  background-size: 32px 32px;
+
+  &.add {
+    background-image: url("~assets/icon-add_green.png");
+
+    &:hover {
+      background-image: url("~assets/icon-add_green_hover.png");
+    }
+  }
+
+  &.back {
+    background-image: url("~assets/icon-back_green.png");
+
+    &:hover {
+      background-image: url("~assets/icon-back_green_hover.png");
+    }
+  }
+
+  &.cancel {
+    background-image: url("~assets/icon-cancel_green.png");
+
+    &:hover {
+      background-image: url("~assets/icon-cancel_green_hover.png");
+    }
+  }
+
+  &.edit {
+    background-image: url("~assets/icon-edit_green.png");
+
+    &:hover {
+      background-image: url("~assets/icon-edit_green_hover.png");
+    }
+  }
+
+  &.plan {
+    background-image: url("~assets/icon-plan_green.png");
+
+    &:hover {
+      background-image: url("~assets/icon-plan_green_hover.png");
+    }
+  }
+}

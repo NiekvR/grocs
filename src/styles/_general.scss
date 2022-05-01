@@ -1,0 +1,116 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Cormorant', serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3  {
+  margin: 0;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.container {
+  flex: 1 1 auto;
+  background-color: #F5F5F5;
+}
+
+$spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceamounts {
+
+  .m-#{$space} {
+    margin: #{$space}px !important;
+  }
+
+  .p-#{$space} {
+    padding: #{$space}px !important;
+  }
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}
+
+$widths: (5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100);
+
+@each $width in $widths {
+  .w-#{$width} {
+    width: $width * 1% !important;
+  }
+}
+
+.back {
+  color: #76b542;
+}
+
+input, textarea {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #76b542;
+  font-size: 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-fill {
+  flex: 1 1 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.secondary {
+  color: #696969;
+  background-color: white;
+}

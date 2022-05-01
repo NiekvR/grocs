@@ -1,0 +1,65 @@
+<grocs-header>
+  <span (click)="back()" class="icon back"></span>
+  <h1 class="flex-grow text-center">Maaltijd</h1>
+  <span *ngIf="!meal && edit" class="icon"></span>
+  <span (click)="edit = true" *ngIf="!edit" class="icon edit"></span>
+  <span (click)="edit = false" *ngIf="meal && edit" class="icon cancel"></span>
+</grocs-header>
+<form *ngIf="!!mealForm && edit" [formGroup]="mealForm">
+  <div class="form-control meal-name">
+    <ng-container *ngIf="edit">
+      <label [class.invalid]="mealForm.controls.name.errors" for="name">Naam</label>
+      <input [class.invalid]="mealForm.controls.name.errors"
+             autocomplete="off"
+             formControlName="name"
+             id="name"
+             placeholder="Naam van maaltijd"
+             type="text"/>
+    </ng-container>
+  </div>
+  <div class="form-control meal-description">
+    <ng-container *ngIf="edit">
+      <label [class.invalid]="mealForm.controls.description.errors" for="description">Beschrijving</label>
+      <textarea [class.invalid]="mealForm.controls.name.errors"
+                autocomplete="off"
+                formControlName="description"
+                id="description"
+                placeholder="Beschrijving" type="text"></textarea>
+    </ng-container>
+  </div>
+  <div class="form-control meal-groceries">
+    <div class="groceries-label">
+      <span>Boodschappen voor het gerecht:</span>
+      <span (click)="addItem()" class="icon add"></span>
+    </div>
+    <div #groceries *ngIf="edit" class="groceries">
+      <div *ngFor="let item of mealForm.get('items').value; let i = index; trackBy:trackByFn" class="grocery"
+           formArrayName="items">
+        <span [formGroupName]="i" class="form-control">
+          <input
+            (keydown.enter)="$event.target.blur();addItem();false"
+            autocomplete="off"
+            formControlName="name"
+            placeholder="Boodschap"
+            type="text">
+          <span (click)="removeItem(i)" class="delete"><fa-icon [icon]="faTimes" [size]="'2x'"></fa-icon></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div (click)="submit()" *ngIf="edit" class="button-bottom">
+  Opslaan
+</div>
+
+<ng-container *ngIf="meal && !edit">
+  <h2 class="text-center">{{ meal.name }}</h2>
+  <p class="p-l-15 p-t-15 m-0">{{ meal.description }}</p>
+  <span class="p-l-15 p-t-15 bold">
+    Boodschappen voor het gerecht:
+  </span>
+  <ul class="w-100 p-l-15 p-r-15 flex-fill overflow-auto">
+    <li *ngFor="let grocery of meal.items">{{grocery.name}}</li>
+  </ul>
+</ng-container>

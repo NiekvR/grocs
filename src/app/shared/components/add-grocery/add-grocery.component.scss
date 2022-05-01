@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+
+  .add-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    justify-content: flex-end;
+    width: 100%;
+
+    span {
+      padding: 10px;
+
+      fa-icon {
+        color: #76b542;
+      }
+    }
+  }
+}
+

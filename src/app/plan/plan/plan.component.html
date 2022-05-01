@@ -1,0 +1,19 @@
+<grocs-header>
+  <span (click)="back()" class="icon back"></span>
+  <h1 class="flex-grow text-center"> Plan weken </h1>
+</grocs-header>
+<ul>
+  <li *ngFor="let item of calendar" class="p-0" (click)="selectMenu(item)">
+    <span class="divider" *ngIf="item.type !== CalendarType.WEEK">{{ getFormatedLabel(item) }}</span>
+    <div class="week" *ngIf="item.type === CalendarType.WEEK">
+      <span class="week-number">Week: {{item.week}}</span>
+      <span *ngIf="!!item.menu && !!this.menus"> {{ getMenu(item.menu)?.name }}</span>
+      <span *ngIf="!item.menu" class="icon add"></span>
+      <span class="week-dates">{{getFormattedWeek(item)}}</span>
+    </div>
+  </li>
+</ul>
+
+<grocs-modal [(active)]="!!selectedWeek">
+  <grocs-search *ngIf="!!searchItems" [searchItems]="searchItems" (addItem)="addMenu($event)"></grocs-search>
+</grocs-modal>

@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'grocs-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'grocs';
+  public openDetails = false;
+
+  constructor() {
+    setTimeout(() => {
+      this.openDetails = true;
+    }, 3600);
+  }
 }

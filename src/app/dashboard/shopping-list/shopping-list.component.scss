@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+
+  .show-done-groceries {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+    div {
+      padding: 5px;
+      background-color: #76b542;
+      color: white;
+    }
+
+    fa-icon {
+      color: #da3335;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<div class="flex align-center p-l-15 p-r-15">
+  <grocs-menu class="p-r-15"></grocs-menu>
+  <h1 class="flex-grow text-center p-r-15">{{menu?.name}}</h1>
+  <fa-icon *ngIf="showWeek" class="p-10 back" [icon]="faToggleOn" size="2x" (click)="showWeek = !showWeek"></fa-icon>
+  <fa-icon *ngIf="!showWeek" class="p-10 back" [icon]="faToggleOff" size="2x" (click)="showWeek = !showWeek"></fa-icon>
+</div>
+<grocs-week-menu *ngIf="!!menu" [menu]="menu" [showWeek]="showWeek"></grocs-week-menu>
+<div class="logo" *ngIf="!menu">
+  <p>Geen menu geselecteerd voor deze week.</p>
+</div>
+
+
+
+<div>
+  <div class="button-bottom" (click)="openShoppingList()">
+    Boodschappenlijst
+  </div>
+</div>

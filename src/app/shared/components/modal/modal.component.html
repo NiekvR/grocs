@@ -1,0 +1,6 @@
+<div *ngIf="active" class="background-overlay" (click)="dismissModal()"></div>
+<div class="wrap" [class.active]="active">
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</div>

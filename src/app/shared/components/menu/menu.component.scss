@@ -1,0 +1,89 @@
+:host {
+
+  .menu-item {
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+    transition: all 0.5s;
+
+    &.inactive {
+      height: 0;
+      width: 0;
+    }
+  }
+
+  .sub-menu {
+    display: flex;
+    width: 100%;
+
+    div {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+
+      img {
+        opacity: 0;
+        cursor: pointer;
+        width: 0;
+        height: 0;
+        transition: width 0.5s, height 0.5s;
+        transition-delay: 0.5s;
+      }
+    }
+
+    &.active {
+
+      div {
+        img {
+          opacity: 1;
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: width 0.5s;
+
+    &.active {
+      justify-content: initial;
+
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    img {
+      cursor: pointer;
+      width: 120px;
+      height: 120px;
+      transition: all 0.5s;
+    }
+
+    .sub-menu {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s linear 0.2s;
+
+      img {
+        width: 0;
+        transition: all 0.5s;
+      }
+
+      &.active {
+        visibility: initial;
+        opacity: 1;
+        width: 80px;
+
+        img {
+          width: 80px;
+        }
+      }
+    }
+  }
+}

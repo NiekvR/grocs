@@ -1,0 +1,43 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin: 0;
+    background-color: white;
+    border-bottom: #76b542 solid 4px;
+
+    fa-icon {
+      color: #76b542;
+    }
+
+    &.select {
+      cursor: pointer;
+    }
+
+    &.strikethrough {
+      text-decoration: line-through;
+    }
+
+    .edit {
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      fa-icon {
+        padding-left: 10px;
+
+        &.delete {
+          color: #da3335;
+        }
+      }
+    }
+  }
+}

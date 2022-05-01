@@ -1,0 +1,29 @@
+form {
+  width: 100%;
+  padding: 15px;
+  background-color: #F5F5F5;
+  border-bottom: #4bba46 solid 2px;
+  border-top: #4bba46 solid 2px;
+
+  h1, h2, h3, p {
+    margin: 0;
+  }
+
+  .form-control {
+    display: flex;
+    padding-bottom: 5px;
+
+    h1, h2, h3 {
+      text-align: center;
+    }
+
+    label {
+      text-align: left;
+      flex: 0 0 80px;
+    }
+
+    textarea {
+      height: 150px;
+    }
+  }
+}

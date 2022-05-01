@@ -1,0 +1,47 @@
+:host {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  grocs-header {
+    flex: 0 0 62px;
+  }
+
+  ul {
+    overflow: auto;
+
+    li {
+      display: flex;
+    }
+  }
+
+  .divider {
+    padding: 0 20px 5px 20px;
+    margin: 0;
+    background-color: #76b542;
+    color: white;
+    flex: 1 1 auto;
+  }
+
+  .week {
+    flex: 1 1 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .menu {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .week-number {
+      flex: 0 0 60px;
+    }
+
+    .week-dates {
+      flex: 0 0 45px;
+
+    }
+  }
+}

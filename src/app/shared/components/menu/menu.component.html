@@ -1,0 +1,23 @@
+<fa-icon class="p-10 back" [icon]="faEllipsisV" size="2x" (click)="active = !active"></fa-icon>
+
+<grocs-modal [(active)]="active">
+  <img class="menu-item" [src]="'assets/icon-plan_green.png'" [class.inactive]="openMenus[ 'meals' ] || openMenus[ 'menus' ]" (click)="goToPlan()"/>
+  <img class="menu-item" [src]="'assets/icon-meals_green.png'" [class.inactive]="openMenus[ 'menus' ]" (click)="openSubNavigation('meals')"/>
+  <img class="menu-item" [src]="'assets/icon-menus_green.png'" [class.inactive]="openMenus[ 'meals' ]" (click)="openSubNavigation('menus')"/>
+  <div class="sub-menu" [class.active]="openMenus[ 'meals' ]">
+    <div>
+      <img [src]="'assets/icon-meals-add_green.png'" (click)="goToCreateMeal()"/>
+    </div>
+    <div>
+      <img [src]="'assets/icon-meals-list_green.png'" (click)="goToMeals()"/>
+    </div>
+  </div>
+  <div class="sub-menu" [class.active]="openMenus[ 'menus' ]">
+    <div>
+      <img [src]="'assets/icon-menus-new_green.png'" (click)="goToCreateMenu()"/>
+    </div>
+    <div>
+      <img [src]="'assets/icon-menus-list_green.png'" (click)="goToMenus()"/>
+    </div>
+  </div>
+</grocs-modal>

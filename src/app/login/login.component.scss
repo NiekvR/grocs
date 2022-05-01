@@ -1,0 +1,53 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+    h1 {
+      font-family: 'Permanent Marker', cursive;
+    }
+
+    form {
+      width: 100%;
+      padding: 15px;
+      background-color: #F5F5F5;
+      border-bottom: #4bba46 solid 2px;
+      border-top: #4bba46 solid 2px;
+
+      .form-control {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .button {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      background-color: #4bba46;
+      border-radius: 2px;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: black 1px solid;
+    }
+  }
+}

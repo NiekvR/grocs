@@ -1,0 +1,10 @@
+<grocs-header>
+  <span class="icon back" (click)="back()"></span>
+  <h1 class="flex-grow text-center">Maaltijden</h1>
+  <span class="icon add" (click)="addMeal()"></span>
+</grocs-header>
+<ul>
+  <li *ngFor="let meal of meals" (click)="mealDetail(meal.id)">
+    {{meal.name}}
+  </li>
+</ul>

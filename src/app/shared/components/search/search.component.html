@@ -1,0 +1,10 @@
+<input (input)="search($event.target.value)"
+  autocomplete="off"
+  id="name"
+  placeholder="Zoek..."
+  type="text"/>
+<ul *ngIf="!!filteredItems">
+  <li *ngFor="let item of filteredItems" (click)="setItem(item)">
+    <span>{{item.name}}</span>
+  </li>
+</ul>

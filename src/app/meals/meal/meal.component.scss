@@ -1,0 +1,63 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1 1 auto;
+
+  grocs-header {
+    flex: 0 0 62px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    .form-control {
+      position: relative;
+
+      .delete {
+        position: absolute;
+        top:4px;
+        right: 10px;
+        color: #da3335;
+      }
+    }
+
+    .meal-name {
+      flex: 0 0 45px;
+      text-align: center;
+    }
+
+    .meal-description {
+      flex: 0 0 155px
+    }
+
+    .meal-groceries {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+
+      .groceries-label {
+        flex: 0 0 34px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .groceries {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        overflow: auto;
+      }
+    }
+
+    .grocery {
+      flex: 0 0 45px;
+    }
+  }
+
+  .button-bottom {
+    flex: 0 0 50px;
+  }
+}

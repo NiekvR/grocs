@@ -1,0 +1,17 @@
+<div class="menu" *ngIf="!!menu && showWeek">
+  <div class="day" *ngFor="let day of getDaysOfMenu(menu.meals)" (click)="openMeal(menu.meals[day])">
+    <span class="day-label" [class.secondary]="secondary">{{getDate(+day)}}</span>
+    <span>{{menu.meals[day].name}}</span>
+  </div>
+</div>
+<div class="menu" *ngIf="!!menu && !showWeek">
+  <div class="day">
+    <span class="day-label" [class.secondary]="secondary">{{getDate(currentDay)}}</span>
+    <span *ngIf="!!menu.meals[currentDay]">{{menu.meals[currentDay].name}}</span>
+    <span *ngIf="!menu.meals[currentDay]">Geen gerecht in het menu vandaag.</span>
+  </div>
+</div>
+
+<div class="menu" *ngIf="!menu && !menu && showWeek">
+  Geen menu deze week.
+</div>

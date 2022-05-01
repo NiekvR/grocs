@@ -1,0 +1,28 @@
+<grocs-header>
+  <fa-icon class="p-10 back" [icon]="faAngleLeft" size="2x" (click)="back()"></fa-icon>
+  <grocs-add-grocery *ngIf="selectMenu" (new)="addGrocery($event)"></grocs-add-grocery>
+</grocs-header>
+
+<div *ngIf="selectMenu">
+  <div class="container">
+    <ul class="scrolling-ios">
+      <li class="select" *ngFor="let grocery of groceries">
+        <span *ngIf="!grocery.edit" (click)="grocery.edit=selecting? selecting : !grocery.edit">{{ grocery.name }}</span>
+        <span *ngIf="grocery.edit" class="edit">
+          <input type="text" [(ngModel)]="grocery.name">
+          <fa-icon [icon]="faCheckCircle" size="2x" (click)="updateGroceryItem(grocery)"></fa-icon>
+          <fa-icon class="delete" [icon]="faMinusCircle" size="2x" (click)="deleteGroceryItem(grocery)"></fa-icon>
+        </span>
+        <span *ngIf="selecting" (click)="grocery.selected=!grocery.selected">
+          <fa-icon *ngIf="!grocery.selected" [icon]="faSquare" size="2x"></fa-icon>
+          <fa-icon *ngIf="grocery.selected" [icon]="faCheckSquare" size="2x"></fa-icon>
+        </span>
+      </li>
+    </ul>
+
+    <div class="add-to-list" (click)="sendToList()">
+      <fa-icon *ngIf="!selecting" [icon]="faNotesMedical" size="2x"></fa-icon>
+      <fa-icon *ngIf="selecting" [icon]="faFileImport" size="2x"></fa-icon>
+    </div>
+  </div>
+</div>

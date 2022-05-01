@@ -1,0 +1,13 @@
+<grocs-header>
+  <span class="icon back" (click)="back()"></span>
+  <h1 class="flex-grow text-center">MENU'S</h1>
+  <span class="icon add" (click)="createMenu()"></span>
+</grocs-header>
+<div class="container">
+  <ul class="scrolling-ios">
+    <li class="select" *ngFor="let list of lists | async" (click)="navigate(list)">
+      <span>{{ list.name }}</span>
+      <span> <fa-icon [icon]="faAngleRight"></fa-icon> </span>
+    </li>
+  </ul>
+</div>

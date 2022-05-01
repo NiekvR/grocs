@@ -1,0 +1,35 @@
+<grocs-header>
+  <fa-icon class="p-10 back" [icon]="faAngleLeft" size="2x" (click)="navigateToDashboard()"></fa-icon>
+  <grocs-add-grocery (new)="addGroceryToShoppingList($event)"></grocs-add-grocery>
+</grocs-header>
+<div class="container">
+  <ul class="scrolling-ios">
+    <li class="select" *ngFor="let grocery of groceries">
+      <span *ngIf="!grocery.edit" (click)="grocery.edit=!grocery.edit">{{ grocery.name }}</span>
+      <span *ngIf="grocery.edit" class="edit">
+        <input type="text" [(ngModel)]="grocery.name">
+        <fa-icon [icon]="faCheckCircle" size="2x" (click)="updateGroceryItem(grocery)"></fa-icon>
+        <fa-icon class="delete" [icon]="faMinusCircle" size="2x" (click)="deleteGroceryItem(grocery)"></fa-icon>
+      </span>
+      <span *ngIf="!grocery.edit" (click)="updateGroceryItemStatus(grocery)">
+        <fa-icon *ngIf="!grocery.done" [icon]="faSquare" size="2x"></fa-icon>
+        <fa-icon *ngIf="grocery.done" [icon]="faCheckSquare" size="2x"></fa-icon>
+      </span>
+    </li>
+  </ul>
+
+  <div class="show-done-groceries">
+    <div *ngIf="!showDone" (click)="showDone=true">Voltooide boodschappen weergeven</div>
+    <div *ngIf="showDone" (click)="showDone=false">Voltooide boodschappen verbergen</div>
+    <fa-icon class="p-l-5" [icon]="faBan" size="2x" (click)="removeDoneItems()"></fa-icon>
+  </div>
+  <ul class="scrolling-ios" *ngIf="showDone">
+    <li class="select strikethrough" *ngFor="let grocery of groceriesDone" (click)="updateGroceryItemStatus(grocery)">
+      <span>{{ grocery.name }}</span>
+      <span>
+        <fa-icon *ngIf="!grocery.done" [icon]="faSquare" size="2x"></fa-icon>
+        <fa-icon *ngIf="grocery.done" [icon]="faCheckSquare" size="2x"></fa-icon>
+      </span>
+    </li>
+  </ul>
+</div>

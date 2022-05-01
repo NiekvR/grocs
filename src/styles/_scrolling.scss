@@ -1,0 +1,4 @@
+.scrolling-ios {
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}

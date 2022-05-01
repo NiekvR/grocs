@@ -1,0 +1,61 @@
+<grocs-header>
+  <span (click)="back()" class="icon back"></span>
+  <ng-container *ngIf="!selectMenu">
+    <h1 *ngIf="!edit && !!menu" class="flex-grow text-center"> {{ menu.name }} </h1>
+    <input *ngIf="edit" type="text" [(ngModel)]="name" placeholder="Naam van menu">
+    <span class="icon"></span>
+    <span (click)="edit = true" *ngIf="!edit" class="icon edit"></span>
+    <span (click)="edit = false" *ngIf="menu && edit" class="icon cancel"></span>
+  </ng-container>
+  <ng-container *ngIf="selectMenu">
+    <grocs-add-grocery *ngIf="selectMenu" (new)="addGrocery($event)"></grocs-add-grocery>
+  </ng-container>
+</grocs-header>
+<ng-container *ngIf="!selectMenu">
+  <grocs-create-menu [(menu)]="newMenu" (addMealChange)="addMenuMeal($event)" (removeMealChange)="removeMenuMeal($event)" *ngIf="edit"></grocs-create-menu>
+
+  <grocs-week-menu class="flex-grow" *ngIf="!!menu && !edit" [menu]="menu" [showDates]="false"></grocs-week-menu>
+
+  <div>
+    <div class="button-bottom secondary" (click)="selectMenu = !selectMenu">
+      Boodschappenlijst
+    </div>
+    <div (click)="submit()" *ngIf="edit" class="button-bottom">
+      Opslaan
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="selectMenu">
+  <grocs-modal [(active)]="selecting">
+    <h2 class="text-center">Voeg toe aan boodschappenlijst</h2>
+    <ng-template [ngTemplateOutlet]="groceryList"></ng-template>
+  </grocs-modal>
+
+  <ng-template [ngTemplateOutlet]="groceryList"></ng-template>
+</ng-container>
+
+<ng-template #groceryList>
+  <ul class="scrolling-ios w-100">
+    <li class="select" *ngFor="let grocery of groceries; let i = index">
+      <span *ngIf="!grocery.edit" (click)="grocery.edit=selecting? selecting : !grocery.edit">{{ grocery.name }}</span>
+      <span *ngIf="grocery.edit" class="edit">
+        <input type="text" [(ngModel)]="grocery.name">
+        <fa-icon [icon]="faCheckCircle" size="2x" (click)="grocery.edit = false"></fa-icon>
+        <fa-icon class="delete" [icon]="faMinusCircle" size="2x" (click)="deleteGroceryItem(i)"></fa-icon>
+      </span>
+      <span *ngIf="selecting" (click)="grocery.selected=!grocery.selected">
+        <fa-icon *ngIf="!grocery.selected" [icon]="faSquare" size="2x"></fa-icon>
+        <fa-icon *ngIf="grocery.selected" [icon]="faCheckSquare" size="2x"></fa-icon>
+      </span>
+    </li>
+  </ul>
+
+  <div class="add-to-list" (click)="sendToList()">
+    <fa-icon *ngIf="!selecting" [icon]="faNotesMedical" size="2x"></fa-icon>
+    <fa-icon *ngIf="selecting" [icon]="faFileImport" size="2x"></fa-icon>
+  </div>
+</ng-template>
+
+
+
