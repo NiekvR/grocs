@@ -1,0 +1,56 @@
+<fa-icon class="back-icon" [icon]="faAngleLeft" *ngIf="selectedStep !== 1" (click)="back()"></fa-icon>
+
+<div class="steps">
+  <div class="step" *ngFor="let step of steps; let i = index">
+    <div class="pointer">
+      <div class="line" [class.show]="i !== 0"></div>
+      <div class="dot" [class.active]="step === selectedStep"></div>
+      <div class="line" [class.show]="i !== (steps.length - 1)"></div>
+    </div>
+    <div class="description">
+      {{ stepNames[ step ]}}
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-column flex-fill overflow-hidden">
+  <grocs-search class="p-b-10" *ngIf="!!meals && !meal" [searchItems]="meals" (addItem)="addMeal($event)"></grocs-search>
+
+  <grocs-add-meal-to-menu *ngIf="!!meal && !day" [meal]="meal" [(showWeek)]="showWeek"
+                          (selectedWeek)="selectWeek($event)"
+                          [(menu)]="menu"
+                          (updatedDay)="selectDay($event)"></grocs-add-meal-to-menu>
+
+  <ng-container *ngIf="!!meal && !!day">
+    <ul class="scrolling-ios w-100">
+      <li class="select" *ngFor="let grocery of meal.items; let i = index">
+        <span>{{ grocery.name }}</span>
+        <span (click)="grocery.selected=!grocery.selected">
+          <fa-icon *ngIf="!grocery.selected" [icon]="faSquare" size="2x"></fa-icon>
+          <fa-icon *ngIf="grocery.selected" [icon]="faCheckSquare" size="2x"></fa-icon>
+        </span>
+      </li>
+    </ul>
+  </ng-container>
+</div>
+
+<div class="summary">
+  <div class="flex flex-column flex-fill">
+    <div class="line">
+      <label>Maaltijd:</label>
+      <div>{{ meal?.name }}</div>
+    </div>
+    <div class="line" *ngIf="!day">
+      <label>Week:</label>
+      <div *ngIf="week">{{ formatWeek(week.week) }}</div>
+    </div>
+    <div class="line" *ngIf="day">
+      <label>Dag:</label>
+      <div>{{ day }}</div>
+    </div>
+  </div>
+  <div class="flex justify-center align-center">
+    <div class="button-bare" [class.disabled]="!day" (click)="updateMenuAndList()">OK</div>
+  </div>
+</div>
+

@@ -1,0 +1,88 @@
+$color: #76b542;
+
+:host {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 100%;
+
+  grocs-header {
+    flex: 0 0 62px;
+  }
+
+  ul {
+    overflow: auto;
+
+    li {
+      display: flex;
+    }
+  }
+
+  .divider {
+    padding: 0 20px 5px 20px;
+    margin: 0;
+    background-color: $color;
+    color: white;
+    flex: 1 1 auto;
+  }
+
+  .week {
+    flex: 1 1 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .menu {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .week-number {
+      flex: 0 0 60px;
+    }
+
+    .week-dates {
+      flex: 0 0 45px;
+
+    }
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 15px 0 15px;
+
+    .day {
+      width: 100%;
+      margin-bottom: 20px;
+      border: $color 2px solid;
+
+      display: flex;
+      position: relative;
+      flex: 0 0 30px;
+      justify-content: space-between;
+
+      .day-label {
+        position: absolute;
+        top: -14px;
+        font-family: 'Permanent Marker', cursive;
+        color: $color;
+        background-color: white;
+      }
+
+      .label {
+        padding: 5px;
+      }
+
+      .add {
+        color: #696969;
+      }
+
+      .delete {
+        padding: 7px 5px 0 5px;
+      }
+    }
+  }
+}

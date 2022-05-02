@@ -7,13 +7,16 @@ import { MealListComponent } from './meal-list/meal-list.component';
 
 
 @NgModule({
-  declarations: [
-    MealComponent,
-    MealListComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ]
+    declarations: [
+        MealComponent,
+        MealListComponent
+    ],
+    exports: [
+        MealComponent
+    ],
+    imports: [
+        CommonModule,
+        SharedModule
+    ]
 })
 export class MealsModule { }

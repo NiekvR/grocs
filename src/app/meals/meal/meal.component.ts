@@ -1,11 +1,11 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MealService} from '../../core/services/collections/meal/meal.service';
 import {Meal} from '../../models/meal.model';
 import {Location} from '@angular/common';
-import {map, switchMap} from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import {of} from 'rxjs';
 import {Grocery} from '../../models/grocery.model';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
@@ -23,13 +23,15 @@ export class MealComponent implements OnInit {
   public mealForm: FormGroup;
   public edit = false;
 
-  public meal: Meal;
+  @Input() meal: Meal;
 
   constructor(private formBuilder: FormBuilder, private afAuth: AngularFireAuth, private location: Location,
               private mealService: MealService, private route: ActivatedRoute, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.getMeal();
+    if (!this.meal) {
+      this.getMeal();
+    }
   }
 
   public addItem() {
@@ -82,7 +84,7 @@ export class MealComponent implements OnInit {
           this.mealForm = this.formBuilder.group({
             name: ['', Validators.required],
             description: ['', Validators.required],
-            items: this.formBuilder.array([ this.createItem() ])
+            items: this.formBuilder.array([this.createItem()])
           });
           this.edit = true;
         }

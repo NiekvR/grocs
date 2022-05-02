@@ -3,7 +3,7 @@ import {DateService} from '../../core/services/date/date.service';
 import {CalendarItem, CalenderType} from '../../models/calendar.model';
 import {MenuService} from '../../core/services/collections/menu/menu.service';
 import {WeekMenuService} from '../../core/services/collections/weekMenu/week-menu.service';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {Menu} from '../../models/menu.model';
 import {SearchItem} from '../../models/search-item.model';
 import {Location} from '@angular/common';

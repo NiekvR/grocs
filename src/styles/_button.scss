@@ -22,3 +22,13 @@
     }
   }
 }
+
+.button-bare {
+  cursor: pointer;
+  color: #76b542;
+  font-size: 20px;
+
+  &.disabled {
+    opacity: 0.4;
+  }
+}

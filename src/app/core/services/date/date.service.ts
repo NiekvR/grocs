@@ -14,7 +14,9 @@ export class DateService {
     moment.defineLocale('nl', {
       parentLocale: 'en',
       months : 'januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december'.split('_'),
+      monthsShort: 'jan_feb_maa_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_'),
       weekdays : 'zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag'.split('_'),
+      weekdaysShort: 'zon_maa_din_woe_don_vrij_zat'.split('_'),
       week: {
         dow: this.FIRST_DAY_OF_WEEK,
         doy: moment.localeData('en').firstDayOfYear()
@@ -75,6 +77,10 @@ export class DateService {
 
   public formatWeek(week: number) {
     return `${moment().week(week).startOf('week').format('D')} - ${moment().week(week).endOf('week').format('D')}`;
+  }
+
+  public formatWeekWithMonths(week: number) {
+    return `${moment().week(week).startOf('week').format('D MMM')} - ${moment().week(week).endOf('week').format('D MMM')}`;
   }
 
   public getWeek() {

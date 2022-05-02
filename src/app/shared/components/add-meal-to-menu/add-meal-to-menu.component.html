@@ -1,0 +1,23 @@
+<ng-container *ngIf="showWeek">
+  <ul>
+    <li *ngFor="let item of weeks" class="p-0" (click)="selectWeek(item)">
+      <span class="divider" *ngIf="item.type !== CalendarType.WEEK">{{ getFormatedLabel(item) }}</span>
+      <div class="week" *ngIf="item.type === CalendarType.WEEK">
+        <span class="week-number">Week: {{item.week}}</span>
+        <span *ngIf="!item.menu" class="icon add"></span>
+        <span class="week-dates">{{getFormattedWeek(item)}}</span>
+      </div>
+    </li>
+  </ul>
+</ng-container>
+
+<ng-container *ngIf="!showWeek">
+  <div class="menu" *ngIf="!!menu">
+    <div class="day" *ngFor="let day of getDaysOfMenu(menu.meals)">
+      <span class="day-label">{{getDate(+day)}}</span>
+      <span *ngIf="!!menu.meals[day].name" class="label" (click)="addMealToMenu(+day)">{{menu.meals[day].name}}</span>
+      <span *ngIf="!menu.meals[day].name" class="label add" (click)="addMealToMenu(+day)">Klik hier om een maaltijd toe te voegen</span>
+    </div>
+  </div>
+</ng-container>
+

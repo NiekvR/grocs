@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {GroceryService} from '../../core/services/collections/grocery/grocery.service';
-import {GroceryList} from '../../models/grocery-list.model';
 import {faToggleOn, faToggleOff} from '@fortawesome/free-solid-svg-icons';
 import {WeekMenuService} from '../../core/services/collections/weekMenu/week-menu.service';
 import {Menu} from '../../models/menu.model';

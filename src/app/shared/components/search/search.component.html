@@ -3,7 +3,7 @@
   id="name"
   placeholder="Zoek..."
   type="text"/>
-<ul *ngIf="!!filteredItems">
+<ul class="overflow-auto" *ngIf="!!filteredItems">
   <li *ngFor="let item of filteredItems" (click)="setItem(item)">
     <span>{{item.name}}</span>
   </li>

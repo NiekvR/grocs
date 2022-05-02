@@ -1,6 +1,7 @@
 <grocs-header>
   <fa-icon class="p-10 back" [icon]="faAngleLeft" size="2x" (click)="navigateToDashboard()"></fa-icon>
   <grocs-add-grocery (new)="addGroceryToShoppingList($event)"></grocs-add-grocery>
+  <fa-icon class="p-5 back" [icon]="faUtensils" size="2x" (click)="openMealSelector=!openMealSelector"></fa-icon>
 </grocs-header>
 <div class="container">
   <ul class="scrolling-ios">
@@ -33,3 +34,7 @@
     </li>
   </ul>
 </div>
+
+<grocs-modal [(active)]="openMealSelector">
+  <grocs-add-meal *ngIf="openMealSelector" (addMealGroceries)="addGroceriesToShoppingList($event)"></grocs-add-meal>
+</grocs-modal>

@@ -1,13 +1,29 @@
 <grocs-header>
   <span class="icon back" (click)="back()"></span>
   <h1 class="flex-grow text-center">MENU'S</h1>
+  <span class="icon m-r-5">
+    <fa-icon
+      [ngClass]="deleteMode ? 'red' : 'green'"
+      [icon]="faMinusCircle" size="2x"
+      (click)="deleteMode=!deleteMode"></fa-icon>
+  </span>
   <span class="icon add" (click)="createMenu()"></span>
 </grocs-header>
 <div class="container">
   <ul class="scrolling-ios">
-    <li class="select" *ngFor="let list of lists | async" (click)="navigate(list)">
-      <span>{{ list.name }}</span>
-      <span> <fa-icon [icon]="faAngleRight"></fa-icon> </span>
+    <li class="select" *ngFor="let menu of menus" (click)="navigate(menu)">
+      <span>{{ menu.name }}</span>
+      <span class="flex align-center">
+        <span class="icon m-r-10">
+          <fa-icon *ngIf="deleteMode"
+            class="red"
+            [icon]="faMinusCircle" size="2x"
+            (click)="deleteMenu(menu)"></fa-icon>
+        </span>
+        <span>
+          <fa-icon [icon]="faAngleRight"></fa-icon>
+        </span>
+      </span>
     </li>
   </ul>
 </div>

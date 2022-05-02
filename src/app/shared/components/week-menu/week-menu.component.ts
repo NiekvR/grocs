@@ -43,6 +43,8 @@ export class WeekMenuComponent implements OnChanges {
   }
 
   public openMeal(meal: MenuMeal) {
-    this.router.navigate([ 'meals', meal.mealId ]);
+    if (!!meal.mealId) {
+      this.router.navigate(['meals', meal.mealId]);
+    }
   }
  }

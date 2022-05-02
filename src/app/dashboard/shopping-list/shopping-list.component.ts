@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Grocery} from '../../models/grocery.model';
 import {GroceryService} from '../../core/services/collections/grocery/grocery.service';
 import {Subscription} from 'rxjs';
-import {faAngleLeft, faBan, faCheckCircle, faCheckSquare, faMinusCircle, faSquare, faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faAngleLeft, faBan, faCheckCircle, faCheckSquare, faMinusCircle, faSquare, faUtensils} from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {take} from 'rxjs/operators';
@@ -19,11 +19,13 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   faBan = faBan;
   faMinusCircle = faMinusCircle;
   faCheckCircle = faCheckCircle;
+  faUtensils = faUtensils;
 
   public groceries: Grocery[];
   public groceriesDone: Grocery[];
 
   public showDone = false;
+  public openMealSelector = false;
 
   private subscriptions: Subscription[] = [];
 
@@ -60,6 +62,10 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   public addGroceryToShoppingList(grocery: Grocery) {
     this.groceryService.addGroceryToShoppingList(grocery);
+  }
+
+  public addGroceriesToShoppingList(groceries: Grocery[]) {
+    this.groceryService.addListToShoppingList(groceries).subscribe(() => this.openMealSelector = false);
   }
 
   public removeDoneItems() {

@@ -34,7 +34,11 @@ export class CollectionService<T> {
   public add(item: T): Observable<T> {
     delete (item as any).id;
     return from(this.collection.add(item)).pipe(switchMap(document => from(document.get()).pipe(
-      map(doc => doc.data() as T)
+      map(doc => {
+        const updatedItem = doc.data() as T;
+        (updatedItem as any).id = doc.id;
+        return updatedItem;
+      })
     )));
   }
 

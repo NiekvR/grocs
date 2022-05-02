@@ -10,6 +10,7 @@ import {AddGroceryComponent} from './components/add-grocery/add-grocery.componen
 import {WeekMenuComponent} from './components/week-menu/week-menu.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { SearchComponent } from './components/search/search.component';
+import { AddMealToMenuComponent } from './components/add-meal-to-menu/add-meal-to-menu.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SearchComponent } from './components/search/search.component';
     AddGroceryComponent,
     WeekMenuComponent,
     ModalComponent,
-    SearchComponent
+    SearchComponent,
+    AddMealToMenuComponent
   ],
   imports: [
     CommonModule,
@@ -29,19 +31,20 @@ import { SearchComponent } from './components/search/search.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  exports: [
-    CommonModule,
-    FontAwesomeModule,
-    AngularFirestoreModule,
-    HeaderComponent,
-    ToastrModule,
-    ReactiveFormsModule,
-    MenuComponent,
-    FormsModule,
-    AddGroceryComponent,
-    WeekMenuComponent,
-    ModalComponent,
-    SearchComponent
-  ]
+    exports: [
+        CommonModule,
+        FontAwesomeModule,
+        AngularFirestoreModule,
+        HeaderComponent,
+        ToastrModule,
+        ReactiveFormsModule,
+        MenuComponent,
+        FormsModule,
+        AddGroceryComponent,
+        WeekMenuComponent,
+        ModalComponent,
+        SearchComponent,
+        AddMealToMenuComponent
+    ]
 })
 export class SharedModule { }
